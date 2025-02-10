@@ -1,0 +1,35 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8020:8020"
+    depends_on:
+      - api
+    networks:
+      - mynetwork
+    environment:
+      - PORT=8020
+
+  api:
+    build: ./backend/api
+    ports:
+      - "8030:8030"
+    depends_on:
+      - soapservice
+    networks:
+      - mynetwork
+    environment:
+      - PORT=8030
+
+  soapservice:
+    build: ./backend/serviceSoap
+    ports:
+      - "8033:8033"
+    networks:
+      - mynetwork
+    environment:
+      - PORT=8033
+
+networks:
+  mynetwork:
+    driver: bridge

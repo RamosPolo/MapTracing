@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 
 const app = express();
-const PORT = 8020;
+const PORT = process.env.PORT || 8020;
 
 // Servir les fichiers statiques (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, "public")));

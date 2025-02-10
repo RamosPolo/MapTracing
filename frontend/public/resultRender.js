@@ -46,9 +46,9 @@ export const handleSearchValues = async (mapManager) => {
         var valTExt2 = "Paris"
 
 
-        const request1 = {address: valTEst1};
+        const request1 = {address: depart};
         var res1 = await geocode(request1);
-        const request2 = {address: valTExt2};
+        const request2 = {address: arrivee};
         var res2 = await geocode(request2);
         pointDepartJSON = {lat: res1[0].geometry.viewport.ii.hi , lon:res1[0].geometry.viewport.Gh.hi};
         pointArriveeJSON = {lat: res2[0].geometry.viewport.ii.hi , lon:res2[0].geometry.viewport.Gh.hi};
@@ -68,6 +68,7 @@ export const handleSearchValues = async (mapManager) => {
 
         var resultBorneResearch = getIntermediatePoints(getCoordinatesListe(), respTime.numberCharge);
         console.log(resultBorneResearch);
+        console.log(respTime)
 
     }
 }

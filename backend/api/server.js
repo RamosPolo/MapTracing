@@ -8,7 +8,7 @@ const travelTimeRoute = require ("./routes/travel-time")
 
 
 const app = express();
-const PORT = 8030;
+const PORT = process.env.PORT || 8030;
 app.use(cors());
 
 // Route par défaut pour vérifier le serveur
