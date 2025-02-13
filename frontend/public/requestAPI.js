@@ -4,7 +4,6 @@ export const getVehicleList = () => {
     fetch('http://localhost:8030/api/cars/')
         .then(response => response.json())
         .then(data => {
-            //console.log("dans getVehculeList : "+data);
             renderVehicleList(data);
         })
         .catch(error => console.error('Error fetching vehicle list:', error));
@@ -30,7 +29,6 @@ export const fetchData = async (start, end) => {
         const url = `http://localhost:8030/api/coordonees?start=${encodeURIComponent(startCoords)}&end=${encodeURIComponent(endCoords)}`;
         // Faire la requête fetch
         const response = await fetch(url);
-        console.log(url);
 
         // Vérifier si la réponse est OK
         if (!response.ok) {
@@ -41,7 +39,6 @@ export const fetchData = async (start, end) => {
         const data = await response.json();
 
         // Retourner les coordonnées
-        console.log(data.features[0])
         return data.features[0];
     } catch (error) {
         console.error("Erreur :", error);
@@ -60,7 +57,6 @@ export const getTimeTravel = async (total_distance, avg_speed, usable_kwh, consu
 
         // Construire l'URL avec les paramètres
         const url = `http://localhost:8030/api/travel-time?total_distance=${encodeURIComponent(total_distance)}&avg_speed=${encodeURIComponent(avg_speed)}&usable_kwh=${encodeURIComponent(usable_kwh)}&consumption=${encodeURIComponent(consumption)}&time_charging=${encodeURIComponent(time_charging)}`;
-        console.log(url);
         // Faire la requête fetch
         const response = await fetch(url);
 

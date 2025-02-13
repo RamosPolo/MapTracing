@@ -40,7 +40,6 @@ export const handleSearchValues = async (mapManager) => {
     }
 
     if (valeursOk(depart, arrivee, datasCar) === true) {
-        console.log("Tout est bon")
 
         var valTEst1 = "Chambéry, 10 boulevard Gambetta"
         var valTExt2 = "Paris"
@@ -52,8 +51,6 @@ export const handleSearchValues = async (mapManager) => {
         var res2 = await geocode(request2);
         pointDepartJSON = {lat: res1[0].geometry.viewport.ii.hi , lon:res1[0].geometry.viewport.Gh.hi};
         pointArriveeJSON = {lat: res2[0].geometry.viewport.ii.hi , lon:res2[0].geometry.viewport.Gh.hi};
-        console.log(pointDepartJSON)
-        console.log(pointArriveeJSON)
         mapManager.addMarker(pointDepartJSON.lat, pointDepartJSON.lon)
         mapManager.addMarker(pointArriveeJSON.lat, pointArriveeJSON.lon)
         await mapManager.updateCurrentRoute(
@@ -65,10 +62,10 @@ export const handleSearchValues = async (mapManager) => {
         var time_charging = datasCar.vehicle.connectors[1].time
 
         const respTime = await getTimeTravel(getDistance(),avg_speed,usable_battery, autonomie,time_charging);
-
         var resultBorneResearch = getIntermediatePoints(getCoordinatesListe(), respTime.numberCharge);
-        console.log(resultBorneResearch);
-        console.log(respTime)
+
+        resultContainer.innerHTML = `<p>Nombre de recharge à faire :${respTime.numberCharge}</p>
+        <p>Temps :  ${respTime.time}</p>`;
 
     }
 }

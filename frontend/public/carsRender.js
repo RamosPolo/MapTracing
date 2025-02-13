@@ -114,7 +114,6 @@ export const formatVehicleDetails = vehicleId => {
  * @returns - An array with formatted data
  */
 const formatVehicleData = data => {
-    console.log(data);
     const generalData = {
         'Chargetrip real range': `${data.vehicle.range.chargetrip_range.worst} - ${data.vehicle.range.chargetrip_range.best} km`,
         'Usable battery': `${data.vehicle.battery.usable_kwh} kWh`,

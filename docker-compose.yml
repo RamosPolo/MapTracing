@@ -9,6 +9,7 @@ services:
       - mynetwork
     environment:
       - PORT=8020
+    image: "paulcoulm/borneelectrictp:latest"
 
   api:
     build: ./backend/api
@@ -20,6 +21,7 @@ services:
       - mynetwork
     environment:
       - PORT=8030
+    image: "paulcoulm/borneelectrictp:latest"
 
   soapservice:
     build: ./backend/serviceSoap
@@ -29,6 +31,7 @@ services:
       - mynetwork
     environment:
       - PORT=8033
+    image: "paulcoulm/borneelectrictp:latest"
 
 networks:
   mynetwork:
