@@ -1,7 +1,10 @@
 import { renderVehicleList } from './carsRender.js'
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const getVehicleList = () => {
-    fetch('http://localhost:8030/api/cars/')
+    const urlIn = `${apiUrl}/api/cars/`
+    fetch(urlIn)
         .then(response => response.json())
         .then(data => {
             renderVehicleList(data);
@@ -10,7 +13,7 @@ export const getVehicleList = () => {
 };
 
 export const getVehicleDetails = (vehicleId, callback) => {
-    let url = `http://localhost:8030/api/carsd?id=${encodeURIComponent(vehicleId)}`
+    let url = `${apiUrl}/api/carsd?id=${encodeURIComponent(vehicleId)}`
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -26,7 +29,7 @@ export const fetchData = async (start, end) => {
         const endCoords = `${end.long},${end.lat}`;
 
         // Construire l'URL avec les paramètres 'start' et 'end'
-        const url = `http://localhost:8030/api/coordonees?start=${encodeURIComponent(startCoords)}&end=${encodeURIComponent(endCoords)}`;
+        const url = `${apiUrl}/api/coordonees?start=${encodeURIComponent(startCoords)}&end=${encodeURIComponent(endCoords)}`;
         // Faire la requête fetch
         const response = await fetch(url);
 
@@ -56,7 +59,7 @@ export const getTimeTravel = async (total_distance, avg_speed, usable_kwh, consu
     try {
 
         // Construire l'URL avec les paramètres
-        const url = `http://localhost:8030/api/travel-time?total_distance=${encodeURIComponent(total_distance)}&avg_speed=${encodeURIComponent(avg_speed)}&usable_kwh=${encodeURIComponent(usable_kwh)}&consumption=${encodeURIComponent(consumption)}&time_charging=${encodeURIComponent(time_charging)}`;
+        const url = `${apiUrl}/api/travel-time?total_distance=${encodeURIComponent(total_distance)}&avg_speed=${encodeURIComponent(avg_speed)}&usable_kwh=${encodeURIComponent(usable_kwh)}&consumption=${encodeURIComponent(consumption)}&time_charging=${encodeURIComponent(time_charging)}`;
         // Faire la requête fetch
         const response = await fetch(url);
 

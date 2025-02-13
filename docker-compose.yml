@@ -9,7 +9,8 @@ services:
       - mynetwork
     environment:
       - PORT=8020
-    image: "paulcoulm/borneelectrictp:latest"
+      - VITE_API_URL=http://api:8030
+    image: "paulcoulm/map-tracing:latest"
 
   api:
     build: ./backend/api
@@ -21,7 +22,8 @@ services:
       - mynetwork
     environment:
       - PORT=8030
-    image: "paulcoulm/borneelectrictp:latest"
+      - SOAP_API_URL=http://soapservice:8033
+    image: "paulcoulm/map-tracing:latest"
 
   soapservice:
     build: ./backend/serviceSoap
@@ -31,7 +33,7 @@ services:
       - mynetwork
     environment:
       - PORT=8033
-    image: "paulcoulm/borneelectrictp:latest"
+    image: "paulcoulm/map-tracing:latest"
 
 networks:
   mynetwork:
