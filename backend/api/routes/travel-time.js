@@ -3,7 +3,7 @@ const axios = require("axios");
 const router = express.Router();
 const soap = require("soap");
 
-const apiUrlSOAP = import.meta.env.SOAP_API_URL;
+const apiUrlSOAP = "http://localhost:8033";
 
 const SOAP_URL = `${apiUrlSOAP}/?wsdl`; // URL du service SOAP en Python
 

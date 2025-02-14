@@ -1,9 +1,9 @@
 import { renderVehicleList } from './carsRender.js'
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = "http://localhost:8030";
 
 export const getVehicleList = () => {
-    const urlIn = `${apiUrl}/api/cars/`
+    let urlIn = `${apiUrl}/api/cars/`
     fetch(urlIn)
         .then(response => response.json())
         .then(data => {

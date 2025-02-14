@@ -16,13 +16,10 @@ services:
     build: ./backend/api
     ports:
       - "8030:8030"
-    depends_on:
-      - soapservice
     networks:
       - mynetwork
     environment:
       - PORT=8030
-      - SOAP_API_URL=http://soapservice:8033
     image: "paulcoulm/map-tracing:latest"
 
   soapservice:
